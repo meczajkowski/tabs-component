@@ -240,7 +240,9 @@ export default class Tabs {
           ${this._config
             .map(
               (tab, index) =>
-                `<li><button class="${TabsClassNames.ITEM} ${
+                `<li class="${TabsClassNames.ITEM_CONTAINER}"><button class="${
+                  TabsClassNames.ITEM
+                } ${
                   index === this._activeTab ? TabsClassNames.ITEM_ACTIVE : ""
                 }">${tab.label}</button></li>`
             )
