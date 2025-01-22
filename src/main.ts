@@ -56,3 +56,4 @@ const tabs = new Tabs(
     },
   ]
 );
+console.log(tabsDemo);
