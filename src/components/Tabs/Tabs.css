@@ -1,0 +1,7 @@
+body {
+  background: #eee;
+}
+
+.tabs__item--active {
+  background: #000;
+}
