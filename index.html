@@ -4,10 +4,77 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Modern Tabs Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <header class="page-header">
+      <div class="page-header__container">
+        <h1 class="page-header__title">Modern Tabs Component</h1>
+        <p class="page-header__subtitle">
+          A lightweight, customizable tabs component built with TypeScript
+        </p>
+        <div class="page-header__buttons">
+          <a
+            href="https://github.com/yourusername/tabs-component"
+            class="button button--primary"
+            >GitHub</a
+          >
+          <a href="#demo" class="button button--secondary">View Demo</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="demo">
+        <div class="demo__container">
+          <h2 class="demo__title">Live Demo</h2>
+          <div id="tabs-demo" class="demo__tabs">
+            <!-- Tabs will be initialized here -->
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2 class="features__title">Features</h2>
+        <div class="features__container">
+          <div class="features__grid">
+            <div class="feature-card">
+              <h3 class="feature-card__title">🚀 TypeScript Ready</h3>
+              <p class="feature-card__text">
+                Built with TypeScript for better development experience and type
+                safety.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="feature-card__title">🎨 Customizable</h3>
+              <p class="feature-card__text">
+                Easy to style and customize to match your project's design
+                system.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="feature-card__title">📱 Responsive</h3>
+              <p class="feature-card__text">
+                Works seamlessly across all device sizes and screen types.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h3 class="feature-card__title">⚡ Fast</h3>
+              <p class="feature-card__text">
+                Lightweight and performant with zero dependencies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
