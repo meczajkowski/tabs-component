@@ -2,6 +2,10 @@
 
 A modern, lightweight, and customizable tabs component built with TypeScript and Vite. This component provides an easy way to create tabbed interfaces in your web applications.
 
+Live: https://meczajkowski-tabs-component.netlify.app/
+
+![image](https://github.com/user-attachments/assets/bc5e6534-55fc-4ebf-941f-46632d21b879)
+
 ## Features
 
 - 🚀 Built with TypeScript for type safety
