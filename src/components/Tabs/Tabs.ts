@@ -1,5 +1,8 @@
 import "./Tabs.css";
 
+/**
+ * Represents a tab configuration.
+ */
 type Tab = {
   label: string;
   content: string;
@@ -203,6 +206,24 @@ export default class Tabs {
   }
 
   /**
+   * Handles the click event on a tab.
+   * Does not create a new event listener.
+   *
+   * @param event - The click event.
+   * @returns void
+   */
+  private _handleTabClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    const tabButton = target.closest(".tabs__item") as HTMLButtonElement;
+    if (tabButton) {
+      const index = Array.from(
+        tabButton.parentElement!.parentElement!.children
+      ).findIndex((item) => item.contains(tabButton));
+      this.activeTab = index;
+    }
+  }
+
+  /**
    * Destroys the Tabs component.
    *
    * Removes all event listeners and clears the container.
@@ -248,14 +269,8 @@ export default class Tabs {
       </section>
     `;
 
-    const tabs = Array.from(
-      this._container.querySelector(".tabs__list")!.children
-    );
-
-    tabs?.forEach((tab, index) => {
-      tab.addEventListener("click", () => {
-        this.activeTab = index;
-      });
-    });
+    this._container
+      .querySelector(".tabs__list")
+      ?.addEventListener("click", this._handleTabClick.bind(this));
   };
 }
