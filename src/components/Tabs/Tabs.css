@@ -1,7 +1,38 @@
-body {
-  background: #eee;
+.tabs {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.tabs__item-container {
+  flex: 1 1 100px;
+  min-width: 100px;
+}
+
+.tabs__item {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid #bfc6cd;
+  background: none;
+  padding: 10px;
+  transition: border-bottom 0.3s ease;
+}
+
+.tabs__item:hover {
+  border-bottom: 2px solid #8b9095;
 }
 
 .tabs__item--active {
-  background: #000;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.tabs__content {
+  padding: 10px;
 }
