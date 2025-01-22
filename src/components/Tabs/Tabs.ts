@@ -1,12 +1,7 @@
+import { type Tab } from "./types";
+import { TabsClassNames } from "./enums";
+import { validateTabIndex, validateConfig } from "./utils";
 import "./Tabs.css";
-
-/**
- * Represents a tab configuration.
- */
-type Tab = {
-  label: string;
-  content: string;
-};
 
 /**
  * Represents a Tabs component.
@@ -81,14 +76,7 @@ export default class Tabs {
    * @returns void
    */
   public set activeTab(index: number) {
-    if (typeof index !== "number") {
-      throw new Error("Index must be a number");
-    }
-
-    if (index < 0 || index >= this._config.length) {
-      throw new Error("Index out of bounds");
-    }
-
+    validateTabIndex(index, this._config.length);
     this._activeTab = index;
     this.render();
   }
@@ -117,17 +105,15 @@ export default class Tabs {
    * @returns void
    */
   public removeTab(index: number): void {
-    if (index < 0 || index >= this._config.length) {
-      throw new Error("Index out of bounds");
-    }
-
+    validateTabIndex(index, this._config.length);
     this._config.splice(index, 1);
+
+    // Adjust active tab index if necessary
 
     // Adjust active tab index if necessary
     if (this._activeTab >= this._config.length) {
       this._activeTab = Math.max(0, this._config.length - 1);
     }
-
     this.render();
   }
 
@@ -140,9 +126,7 @@ export default class Tabs {
    * @returns void
    */
   public set config(newConfig: Tab[]) {
-    if (!Array.isArray(newConfig) || newConfig.length === 0) {
-      throw new Error("Config must be a non-empty array");
-    }
+    validateConfig(newConfig);
     this._config = [...newConfig];
     this._activeTab = 0;
     this.render();
@@ -241,7 +225,6 @@ export default class Tabs {
    * @returns void
    */
   private render: () => void = () => {
-    console.log("render");
     if (!this._container) {
       throw new Error("Container is not defined");
     }
@@ -252,25 +235,25 @@ export default class Tabs {
 
     this.destroy();
     this._container.innerHTML = `
-      <section class="tabs">
-        <ul class="tabs__list">
+      <section class="${TabsClassNames.CONTAINER}">
+        <ul class="${TabsClassNames.LIST}">
           ${this._config
             .map(
               (tab, index) =>
-                `<li><button class="tabs__item ${
-                  index === this._activeTab ? "tabs__item--active" : ""
+                `<li><button class="${TabsClassNames.ITEM} ${
+                  index === this._activeTab ? TabsClassNames.ITEM_ACTIVE : ""
                 }">${tab.label}</button></li>`
             )
             .join("")}
         </ul>
-        <article class="tabs__content">
+        <article class="${TabsClassNames.CONTENT}">
           ${this._config[this._activeTab].content}
         </article>
       </section>
     `;
 
     this._container
-      .querySelector(".tabs__list")
+      .querySelector(`.${TabsClassNames.LIST}`)
       ?.addEventListener("click", this._handleTabClick.bind(this));
   };
 }
